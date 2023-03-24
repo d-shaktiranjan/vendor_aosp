@@ -202,6 +202,10 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.biometrics.face.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.biometrics.face.xml
 endif
 
+# Repainter integration
+PRODUCT_PACKAGES += \
+    RepainterServicePriv
+
 # NexusLauncher resources
 PRODUCT_PACKAGES += \
     NexusLauncherResOverlay
