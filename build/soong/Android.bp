@@ -245,6 +245,28 @@ needs_camera_boottime {
     },
 }
 
+
+soong_config_module_type {
+    name: "bootloader_message_offset",
+    module_type: "cc_defaults",
+    config_namespace: "customGlobalVars",
+    value_variables: ["bootloader_message_offset"],
+    properties: [
+        "cflags",
+        "export_cflags",
+    ],
+}
+
+bootloader_message_offset {
+    name: "bootloader_message_offset_defaults",
+    soong_config_variables: {
+        bootloader_message_offset: {
+            cflags: ["-DBOARD_RECOVERY_BLDRMSG_OFFSET=%s"],
+            export_cflags: ["-DBOARD_RECOVERY_BLDRMSG_OFFSET=%s"],
+        },
+    },
+}
+
 soong_config_module_type {
     name: "egl_display_array",
     module_type: "cc_defaults",
@@ -400,6 +422,22 @@ uses_legacy_fd_fbdev {
     soong_config_variables: {
         uses_legacy_fd_fbdev: {
             cppflags: ["-DUSES_LEGACY_FD_FBDEV"],
+        },
+    },
+}
+
+soong_config_module_type {
+    name: "needs_oplus_tag",
+    module_type: "cc_defaults",
+    config_namespace: "customGlobalVars",
+    bool_variables: ["needs_oplus_tag"],
+    properties: ["cppflags"],
+}
+needs_oplus_tag {
+    name: "needs_oplus_vendor_tag",
+    soong_config_variables: {
+        needs_oplus_tag: {
+            cppflags: ["-DNEEDS_OPLUS_VENDOR_TAG"],
         },
     },
 }
